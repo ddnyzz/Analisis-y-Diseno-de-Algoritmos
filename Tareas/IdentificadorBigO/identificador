@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class identificador {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Escribe tu codigo (termina con 'fin'):");
+        
+        int nivelMax = 0;
+        int nivelActual = 0;
+
+        while (true) {
+            String linea = sc.nextLine();
+
+            if (linea.equals("fin")) {
+                break;
+            }
+
+            if (linea.contains("for")) {
+                nivelActual++;
+                if (nivelActual > nivelMax) {
+                    nivelMax = nivelActual;
+                }
+            }
+
+            if (linea.contains("}")) {
+                if (nivelActual > 0) {
+                    nivelActual--;
+                }
+            }
+        }
+
+        // Resultado
+        if (nivelMax == 0) {
+            System.out.println("Complejidad estimada: O(1)");
+        } else if (nivelMax == 1) {
+            System.out.println("Complejidad estimada: O(n)");
+        } else {
+            System.out.println("Complejidad estimada: O(n^" + nivelMax + ")");
+        }
+
+        sc.close();
+    }
+}
