@@ -1,0 +1,56 @@
+Algoritmo dinosaurio
+
+    Definir dinoY, velocidadY, gravedad, fuerzaSalto Como Entero
+    Definir velocidadJuego, puntuacion Como Entero
+    Definir gameOver Como Logico
+    Definir obstaculos Como Arreglo
+
+    gravedad <- 1
+    fuerzaSalto <- 15
+    velocidadJuego <- 5
+    puntuacion <- 0
+    dinoY <- 0
+    velocidadY <- 0
+    gameOver <- Falso
+
+    Mientras gameOver = Falso Hacer
+
+        Si teclaEspacioPresionada() Y dinoY = 0 Entonces
+            velocidadY <- fuerzaSalto
+        FinSi
+
+        velocidadY <- velocidadY - gravedad
+        dinoY <- dinoY + velocidadY
+
+        Si dinoY < 0 Entonces
+            dinoY <- 0
+            velocidadY <- 0
+        FinSi
+        Para cada obstaculo en obstaculos Hacer
+            obstaculo.x <- obstaculo.x - velocidadJuego
+        FinPara
+
+        Si noHayObstaculoCercano() Entonces
+            crearNuevoObstaculo(obstaculos)
+        FinSi
+
+        Para cada obstaculo en obstaculos Hacer
+            Si colisiona(dino, obstaculo) Entonces
+                gameOver <- Verdadero
+            FinSi
+        FinPara
+
+        puntuacion <- puntuacion + 1
+
+        Si puntuacion MOD 100 = 0 Entonces
+            velocidadJuego <- velocidadJuego + 1
+        FinSi
+
+    FinMientras
+
+    Mostrar "Fin del juego"
+    Mostrar "Puntuación final: ", puntuacion
+
+FinAlgoritmo
+
+
