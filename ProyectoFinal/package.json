@@ -1,0 +1,36 @@
+{
+  "name": "georutas-graphgps",
+  "version": "1.0.0",
+  "description": "Web app responsive para mapas centrados en Zacatecas y algoritmos de grafos Dijkstra, Prim y Kruskal.",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "init-db": "node database/init-db.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "graph",
+    "leaflet",
+    "dijkstra",
+    "prim",
+    "kruskal",
+    "sqlite",
+    "express",
+    "zacatecas",
+    "graph-visualization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.9.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
